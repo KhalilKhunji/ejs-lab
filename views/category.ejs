@@ -3,11 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= categoryName %></title>
+  <title><%= categoryName[0].toUpperCase() + categoryName.slice(1) %></title>
 </head>
 <body>
     <%- include('./partials/nav') %>
-    <h1><%= categoryName %></h1>
-    <p>hello</p>
+    <h1><%= categoryName[0].toUpperCase() + categoryName.slice(1) %></h1>
+    <ul>
+    <% menuItems.forEach((item) => { %>
+      <% if(item.category === categoryName) { %>
+        <li><b><%= item.name %></b> (Price: <%= item.price %>) - Rating: <%= item.rating %></li>
+        <p><i><%= item.details %></i></p>
+      <% }; %>
+    <% }); %>
+    </ul>
 </body>
 </html>

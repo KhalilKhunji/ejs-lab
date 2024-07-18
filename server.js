@@ -62,11 +62,9 @@ app.get('/menu', (req, res) => {
 });
 
 app.get('/menu/:category', (req, res) => {
-    res.render('category.ejs',() => {
-      const menuItems = RESTAURANT.menu.filter((item) => item.category === req.params['category']);
-      const categoryName = req.params['category'][0].toUpperCase() + req.params['category'].slice(1);
-      return menuItems, categoryName;
-    });
+    const menuItems = RESTAURANT.menu.filter((item) => item.category === req.params['category']);
+    const categoryName = req.params['category'];
+    res.render('category.ejs',{menuItems, categoryName});
 });
 
 app.listen(3000);
